@@ -12,9 +12,9 @@ class ParsedownExtraMarkdown implements Markdown {
      */
     protected $parsedown;
 
-    public function __construct(ParsedownExtra $parsedown)
+    public function __construct(ParsedownExtra $parsedown = null)
     {
-        $this->parsedown = $parsedown;
+        $this->parsedown = $parsedown ?: new ParsedownExtra;
     }
 
     /**
