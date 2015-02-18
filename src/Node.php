@@ -1,8 +1,6 @@
 <?php namespace Jralph\Twig\Markdown;
 
 use Twig_Node;
-use Twig_Node_Expression;
-use Twig_Node_Text;
 use Twig_NodeInterface;
 use Twig_Compiler;
 

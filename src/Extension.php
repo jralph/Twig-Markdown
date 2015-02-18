@@ -1,7 +1,6 @@
 <?php namespace Jralph\Twig\Markdown;
 
 use Twig_Extension;
-use Twig_SimpleFilter;
 use Twig_Filter_Method;
 use Twig_Function_Method;
 use Jralph\Twig\Markdown\Contracts\Markdown;
