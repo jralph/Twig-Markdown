@@ -11,6 +11,12 @@ class Node extends Twig_Node {
         parent::__construct(['value' => $value], ['name' => $tag], $line, $tag);
     }
 
+    /**
+     * Compile the provided markdown into html.
+     *
+     * @param  Twig_Compiler $compiler
+     * @return void
+     */
     public function compile(Twig_Compiler $compiler)
     {
         $compiler->addDebugInfo($this)

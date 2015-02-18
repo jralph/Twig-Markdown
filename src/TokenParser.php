@@ -6,6 +6,11 @@ use Jralph\Twig\Markdown\Contracts\MarkdownInterface as Markdown;
 
 class TokenParser extends Twig_TokenParser {
 
+    /**
+     * An instance of a markdown processor to use.
+     *
+     * @var Markdown
+     */
     protected $markdown;
 
     public function __construct(Markdown $markdown)
@@ -13,6 +18,12 @@ class TokenParser extends Twig_TokenParser {
         $this->markdown = $markdown;
     }
 
+    /**
+     * Parse the twig tag.
+     *
+     * @param  Twig_Token $token
+     * @return Node
+     */
     public function parse(Twig_Token $token)
     {
         $line = $token->getLine();
@@ -29,11 +40,21 @@ class TokenParser extends Twig_TokenParser {
         return new Node($body, $line, $this->getTag());
     }
 
+    /**
+     * Return the name of the twig tag.
+     *
+     * @return string
+     */
     public function getTag()
     {
         return 'markdown';
     }
 
+    /**
+     * Return the markdown instance being used.
+     *
+     * @return string
+     */
     public function getMarkdown()
     {
         return $this->markdown;
