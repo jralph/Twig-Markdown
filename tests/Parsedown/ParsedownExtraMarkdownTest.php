@@ -24,7 +24,7 @@ class ParsedownExtraMarkdownText extends PHPUnit_Framework_TestCase {
 
     public function test_object_is_instance_of_markdown_contract()
     {
-        $this->assertInstanceOf('Jralph\Twig\Markdown\Contracts\Markdown', $this->parsedownExtraMarkdown);
+        $this->assertInstanceOf('Jralph\Twig\Markdown\Contracts\MarkdownInterface', $this->parsedownExtraMarkdown);
     }
 
     public function test_parse_method_returns_expected_html()

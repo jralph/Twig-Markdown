@@ -3,7 +3,7 @@
 use Twig_Extension;
 use Twig_Filter_Method;
 use Twig_Function_Method;
-use Jralph\Twig\Markdown\Contracts\Markdown;
+use Jralph\Twig\Markdown\Contracts\MarkdownInterface as Markdown;
 
 class Extension extends Twig_Extension {
 

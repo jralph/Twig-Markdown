@@ -2,7 +2,7 @@
 
 use Twig_TokenParser;
 use Twig_Token;
-use Jralph\Twig\Markdown\Contracts\Markdown;
+use Jralph\Twig\Markdown\Contracts\MarkdownInterface as Markdown;
 
 class TokenParser extends Twig_TokenParser {
 

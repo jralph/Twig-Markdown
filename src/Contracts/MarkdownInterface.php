@@ -1,6 +1,6 @@
 <?php namespace Jralph\Twig\Markdown\Contracts;
 
-interface Markdown {
+interface MarkdownInterface {
 
     public function parse($text);
 

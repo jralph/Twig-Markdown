@@ -1,6 +1,6 @@
 <?php namespace Jralph\Twig\Markdown\Parsedown;
 
-use Jralph\Twig\Markdown\Contracts\Markdown;
+use Jralph\Twig\Markdown\Contracts\MarkdownInterface as Markdown;
 use ParsedownExtra;
 
 class ParsedownExtraMarkdown implements Markdown {
