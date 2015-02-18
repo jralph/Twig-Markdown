@@ -1,0 +1,10 @@
+--TEST--
+"markdown" filter
+--TEMPLATE--
+{{ '# Test' | markdown }}
+{{ paragraph | markdown }}
+--DATA--
+return ['paragraph' => 'Hello World']
+--EXPECT--
+<h1>Test</h1>
+<p>Hello World</p>

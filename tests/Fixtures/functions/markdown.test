@@ -1,0 +1,12 @@
+--TEST--
+"markdown" function
+--TEMPLATE--
+{{ markdown('# Test') }}
+{{ markdown('Hello World') }}
+{{ markdown(paragraph) }}
+--DATA--
+return ['paragraph' => 'Hello World']
+--EXPECT--
+<h1>Test</h1>
+<p>Hello World</p>
+<p>Hello World</p>

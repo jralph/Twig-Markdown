@@ -1,0 +1,12 @@
+--TEST--
+"markdown" global function
+--TEMPLATE--
+{% autoescape false %}
+{{ markdown.parse('# Test') }}
+{{ markdown.parse(paragraph) }}
+{% endautoescape %}
+--DATA--
+return ['paragraph' => 'Hello World']
+--EXPECT--
+<h1>Test</h1>
+<p>Hello World</p>
