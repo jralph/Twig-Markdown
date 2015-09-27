@@ -1,0 +1,10 @@
+--TEST--
+"mardown" tag
+--TEMPLATE--
+{% markdown %}
+"It's a party"
+{% endmarkdown %}
+--DATA--
+return []
+--EXPECT--
+<p>&quot;It's a party&quot;</p>
