@@ -3,9 +3,7 @@
 use Twig_Extension;
 use Twig_Extension_GlobalsInterface;
 use Twig_Filter;
-use Twig_Filter_Method;
 use Twig_Function;
-use Twig_Function_Method;
 use Jralph\Twig\Markdown\Contracts\MarkdownInterface as Markdown;
 
 class Extension extends Twig_Extension implements Twig_Extension_GlobalsInterface {
