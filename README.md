@@ -2,6 +2,8 @@
 
 [![Latest Stable Version](https://poser.pugx.org/jralph/twig-markdown/v/stable.svg)](https://packagist.org/packages/jralph/twig-markdown) [![Total Downloads](https://poser.pugx.org/jralph/twig-markdown/downloads.svg)](https://packagist.org/packages/jralph/twig-markdown) [![Latest Unstable Version](https://poser.pugx.org/jralph/twig-markdown/v/unstable.svg)](https://packagist.org/packages/jralph/twig-markdown) [![License](https://poser.pugx.org/jralph/twig-markdown/license.svg)](https://packagist.org/packages/jralph/twig-markdown)
 
+**Updated for Twig 2.\* - For Twig 1.\* please use version 1.0.1**
+
 A simple and extendable twig extension for providing markdown filters, globals, tags and functions.
 
 By default, this extension comes with [ParsedownExtra](https://github.com/erusev/parsedown-extra), but this can be easily replaced with any markdown processor or your choice by simply implementing the provided interface and passing your new implementation into the extension.
