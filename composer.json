@@ -4,7 +4,7 @@
     "keywords": ["twig", "markdown", "parsedown"],
     "license": "MIT",
     "require": {
-        "twig/twig": "~1.0",
+        "twig/twig": "~2",
         "erusev/parsedown-extra": "0.*"
     },
     "require-dev": {

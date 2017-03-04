@@ -2,7 +2,17 @@
 
 use Jralph\Twig\Markdown\Parsedown\ParsedownExtraMarkdown;
 
-class ParsedownExtraMarkdownText extends PHPUnit_Framework_TestCase {
+class ParsedownExtraMarkdownText extends PHPUnit_Framework_TestCase
+{
+    /**
+     * @var Parsedown
+     */
+    protected $parsedown;
+
+    /**
+     * @var ParsedownExtra
+     */
+    protected $parsedownExtraMarkdown;
 
     public function setUp()
     {
