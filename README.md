@@ -16,12 +16,12 @@ _Coming Soon_
 
 You can simply install the extension package through composer.
 
-    composer require jralph\twig-markdown
+    composer require jralph/twig-markdown
 
 You can also add the package and the version you want to your composer.json file.
 
     "require": {
-        "jralph\twig-markdown": "dev-master"
+        "jralph/twig-markdown": "dev-master"
     }
 
 ## Setup With Twig ##
