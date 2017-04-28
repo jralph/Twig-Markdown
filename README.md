@@ -28,10 +28,12 @@ You can also add the package and the version you want to your composer.json file
 
 To use this extension with twig (without any additions such as TwigBridge for Laravel. _See below._), you can simply do the following.
 
-    $twig = new Twig_Environment($locder);
-    $twig->addExtension(new Jralph\Twig\Markdown\Extension(
-        new Jralph\Twig\Markdown\Parsedown\ParsedownExtraMarkdown
-    ));
+```php
+$twig = new Twig_Environment($loader);
+$twig->addExtension(new Jralph\Twig\Markdown\Extension(
+    new Jralph\Twig\Markdown\Parsedown\ParsedownExtraMarkdown
+));
+```
 
 ## Setup With TwigBridge for Laravel 5 ##
 
@@ -41,24 +43,28 @@ __Via config/twigbridge.php__
 
 You can add the extension directly to the `enabled` section of the `extensions` array within the `config/twigbridge.php` file. (Note, you will need to make sure that the config file has been published `php artisan vendor:publish` for this file to exist.)
 
-    'extensions' => [
+```php
+'extensions' => [
 
-        'enabled' => [
-            // Other TwigBridge Extensions
-            new Jralph\Twig\Markdown\Extension(
-                new Jralph\Twig\Markdown\Parsedown\ParsedownExtraMarkdown
-            ),
-        ]
-
+    'enabled' => [
+        // Other TwigBridge Extensions
+        new Jralph\Twig\Markdown\Extension(
+            new Jralph\Twig\Markdown\Parsedown\ParsedownExtraMarkdown
+        ),
     ]
+
+]
+```php
 
 __Via Twig Facade__
 
 You can also add the extension using the `Twig` facade that TwigBridge provides.
 
-    Twig::addExtension(new Jralph\Twig\Markdown\Extension(
-        new Jralph\Twig\Markdown\Parsedown\ParsedownExtraMarkdown
-    ));
+```php
+Twig::addExtension(new Jralph\Twig\Markdown\Extension(
+    new Jralph\Twig\Markdown\Parsedown\ParsedownExtraMarkdown
+));
+```
 
 You can add this code to your Laravel 5 install in any way you like, but we recommend using a service provider.
 
@@ -115,50 +121,54 @@ The contract requires the following methods:
 
 Example using [Michelf Markdown](https://github.com/michelf/php-markdown).
 
-    // MichelfMardown.php
-    <?php
+```php
+// MichelfMardown.php
+<?php
 
-    use Jralph\Twig\Markdown\Contracts\MarkdownInterface;
-    use Michelf\Markdown;
+use Jralph\Twig\Markdown\Contracts\MarkdownInterface;
+use Michelf\Markdown;
 
-    class MichelfMardown implements MarkdownInterface {
+class MichelfMardown implements MarkdownInterface {
 
-        public function parse($text)
-        {
-            $markdown = new Markdown;
+    public function parse($text)
+    {
+        $markdown = new Markdown;
 
-            return $markdown->transform($text);
-        }
-
+        return $markdown->transform($text);
     }
+
+}
+```
 
 Now you have the implementation setup, just add this into the twig extension.
 
-    // For plain twig.
+```php
+// For plain twig.
 
-    $twig = new Twig_Environment($locder);
-    $twig->addExtension(new Jralph\Twig\Markdown\Extension(
-        new MichelfMardown
-    ));
+$twig = new Twig_Environment($locder);
+$twig->addExtension(new Jralph\Twig\Markdown\Extension(
+    new MichelfMardown
+));
 
-    // For TwigBridge
+// For TwigBridge
 
-    'extensions' => [
+'extensions' => [
 
-        'enabled' => [
-            // Other TwigBridge Extensions
-            new Jralph\Twig\Markdown\Extension(
-                new MichelfMardown
-            ),
-        ]
-
+    'enabled' => [
+        // Other TwigBridge Extensions
+        new Jralph\Twig\Markdown\Extension(
+            new MichelfMardown
+        ),
     ]
 
-    // OR
+]
 
-    Twig::addExtension(new Jralph\Twig\Markdown\Extension(
-        new MichelfMardown
-    ));
+// OR
+
+Twig::addExtension(new Jralph\Twig\Markdown\Extension(
+    new MichelfMardown
+));
+```
 
 It's as simple as that!
 
