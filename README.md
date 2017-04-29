@@ -54,7 +54,7 @@ You can add the extension directly to the `enabled` section of the `extensions` 
     ]
 
 ]
-```php
+```
 
 __Via Twig Facade__
 
