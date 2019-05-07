@@ -79,6 +79,14 @@ Use just like any other twig filter.
 
     {{ "# Some Markdown" | markdown }}
     {{ markdownVariable | markdown }}
+    
+    {% apply markdown %}
+        # Some Markdown
+
+        This is some simple markdown content.
+        
+        {{ moreMarkdown }}
+    {% endapply %}
 
 ### Function
 
@@ -106,6 +114,8 @@ We also provide a handy tag for you to use if you want to write the markdown wit
         # Some Markdown
 
         This is some simple markdown content.
+        
+        {{ moreMarkdown }}
     {% endmarkdown %}
 
 ## Using Another Processor
@@ -145,7 +155,7 @@ Now you have the implementation setup, just add this into the twig extension.
 ```php
 // For plain twig.
 
-$twig = new Twig_Environment($locder);
+$twig = new Twig_Environment($loader);
 $twig->addExtension(new Jralph\Twig\Markdown\Extension(
     new MichelfMardown
 ));
