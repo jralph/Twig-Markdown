@@ -8,10 +8,6 @@ A simple and extendable twig extension for providing markdown filters, globals, 
 
 By default, this extension comes with [ParsedownExtra](https://github.com/erusev/parsedown-extra), but this can be easily replaced with any markdown processor or your choice by simply implementing the provided interface and passing your new implementation into the extension.
 
-### Contents ###
-
-_Coming Soon_
-
 ## Installation ##
 
 You can simply install the extension package through composer.
