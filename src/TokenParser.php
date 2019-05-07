@@ -30,8 +30,7 @@ class TokenParser extends AbstractTokenParser {
 
         $this->parser->getStream()->expect(Token::BLOCK_END_TYPE);
 
-        $body = $this->parser->subparse(function(Token $token)
-        {
+        $body = $this->parser->subparse(function(Token $token) {
             return $token->test('endmarkdown');
         }, true);
 

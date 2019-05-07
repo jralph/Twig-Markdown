@@ -15,7 +15,7 @@ class ParsedownExtraMarkdownText extends TestCase
      */
     protected $parsedownExtraMarkdown;
 
-    public function setUp()
+    protected function setUp()
     {
         parent::setUp();
 
