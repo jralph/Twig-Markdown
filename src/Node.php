@@ -1,17 +1,17 @@
 <?php namespace Jralph\Twig\Markdown;
 
-use Twig_Node;
-use Twig_Compiler;
+use Twig\Compiler;
+use Twig\Node\Node as TwigNode;
 
-class Node extends Twig_Node
+class Node extends TwigNode
 {
     /**
      * Node constructor.
-     * @param Twig_Node $value
+     * @param TwigNode $value
      * @param int $line
      * @param null $tag
      */
-    public function __construct(Twig_Node $value, $line, $tag = null)
+    public function __construct(TwigNode $value, $line, $tag = null)
     {
         parent::__construct(['value' => $value], ['name' => $tag], $line, $tag);
     }
@@ -19,10 +19,10 @@ class Node extends Twig_Node
     /**
      * Compile the provided markdown into html.
      *
-     * @param  Twig_Compiler $compiler
+     * @param  Compiler $compiler
      * @return void
      */
-    public function compile(Twig_Compiler $compiler)
+    public function compile(Compiler $compiler)
     {
         $compiler->addDebugInfo($this)
                  ->write('ob_start();' . PHP_EOL)

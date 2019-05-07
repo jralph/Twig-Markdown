@@ -1,10 +1,10 @@
 <?php namespace Jralph\Twig\Markdown;
 
-use Twig_TokenParser;
-use Twig_Token;
+use Twig\Token;
+use Twig\TokenParser\AbstractTokenParser;
 use Jralph\Twig\Markdown\Contracts\MarkdownInterface as Markdown;
 
-class TokenParser extends Twig_TokenParser {
+class TokenParser extends AbstractTokenParser {
 
     /**
      * An instance of a markdown processor to use.
@@ -21,21 +21,21 @@ class TokenParser extends Twig_TokenParser {
     /**
      * Parse the twig tag.
      *
-     * @param  Twig_Token $token
+     * @param  Token $token
      * @return Node
      */
-    public function parse(Twig_Token $token)
+    public function parse(Token $token)
     {
         $line = $token->getLine();
 
-        $this->parser->getStream()->expect(Twig_Token::BLOCK_END_TYPE);
+        $this->parser->getStream()->expect(Token::BLOCK_END_TYPE);
 
-        $body = $this->parser->subparse(function(Twig_Token $token)
+        $body = $this->parser->subparse(function(Token $token)
         {
             return $token->test('endmarkdown');
         }, true);
 
-        $this->parser->getStream()->expect(Twig_Token::BLOCK_END_TYPE);
+        $this->parser->getStream()->expect(Token::BLOCK_END_TYPE);
 
         return new Node($body, $line, $this->getTag());
     }

@@ -2,8 +2,9 @@
 
 use Jralph\Twig\Markdown\Extension;
 use Jralph\Twig\Markdown\Parsedown\ParsedownExtraMarkdown;
+use Twig\Test\IntegrationTestCase;
 
-class ExtensionIntergrationTest extends Twig_Test_IntegrationTestCase {
+class ExtensionIntergrationTest extends IntegrationTestCase {
 
     public function getExtensions()
     {

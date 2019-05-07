@@ -1,8 +1,9 @@
 <?php
 
 use Jralph\Twig\Markdown\Parsedown\ParsedownExtraMarkdown;
+use PHPUnit\Framework\TestCase;
 
-class ParsedownExtraMarkdownText extends PHPUnit_Framework_TestCase
+class ParsedownExtraMarkdownText extends TestCase
 {
     /**
      * @var Parsedown

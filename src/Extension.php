@@ -1,12 +1,12 @@
 <?php namespace Jralph\Twig\Markdown;
 
-use Twig_Extension;
-use Twig_Extension_GlobalsInterface;
-use Twig_Filter;
-use Twig_Function;
+use Twig\Extension\AbstractExtension;
+use Twig\Extension\GlobalsInterface;
+use Twig\TwigFilter;
+use Twig\TwigFunction;
 use Jralph\Twig\Markdown\Contracts\MarkdownInterface as Markdown;
 
-class Extension extends Twig_Extension implements Twig_Extension_GlobalsInterface {
+class Extension extends AbstractExtension implements GlobalsInterface {
 
     /**
      * An instance of a markdown processor to use.
@@ -50,7 +50,7 @@ class Extension extends Twig_Extension implements Twig_Extension_GlobalsInterfac
     public function getFilters()
     {
         return [
-            'markdown' => new Twig_Filter('markdown', [$this, 'parseMarkdown'], ['is_safe' => ['html']])
+            'markdown' => new TwigFilter('markdown', [$this, 'parseMarkdown'], ['is_safe' => ['all']])
         ];
     }
 
@@ -62,7 +62,7 @@ class Extension extends Twig_Extension implements Twig_Extension_GlobalsInterfac
     public function getFunctions()
     {
         return [
-            'markdown' => new Twig_Function('markdown', [$this, 'parseMarkdown'], ['is_safe' => ['html']])
+            'markdown' => new TwigFunction('markdown', [$this, 'parseMarkdown'], ['is_safe' => ['all']])
         ];
     }
 
