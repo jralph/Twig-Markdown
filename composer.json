@@ -9,7 +9,7 @@
         "erusev/parsedown-extra": "0.*"
     },
     "require-dev": {
-        "phpunit/phpunit": "~4.0",
+        "phpunit/phpunit": "4.8.35",
         "mockery/mockery": "~0.9"
     },
     "autoload": {

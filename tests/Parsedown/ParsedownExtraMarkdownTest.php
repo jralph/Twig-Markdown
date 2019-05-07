@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 class ParsedownExtraMarkdownText extends TestCase
 {
     /**
-     * @var Parsedown
+     * @var Parsedown|\Mockery\MockInterface
      */
     protected $parsedown;
 
@@ -17,8 +17,6 @@ class ParsedownExtraMarkdownText extends TestCase
 
     protected function setUp()
     {
-        parent::setUp();
-
         $this->parsedown = Mockery::mock('ParsedownExtra');
 
         $this->parsedownExtraMarkdown = new ParsedownExtraMarkdown($this->parsedown);
@@ -26,8 +24,6 @@ class ParsedownExtraMarkdownText extends TestCase
 
     public function tearDown()
     {
-        parent::tearDown();
-
         unset($this->parsedownExtraMarkdown);
 
         Mockery::close();
