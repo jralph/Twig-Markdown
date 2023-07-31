@@ -91,7 +91,7 @@ Use just like any other twig function.
     {{ markdown("# Some Markdown") }}
     {{ markdown(markdownVariable) }}
 
-**NOTE: The above function usage is unsafe. Function input is not automatically saintised. To sanitise this in the template, please use the escape filter like below.**
+**NOTE: The above function usage is unsafe. Function input is not automatically sanitised. To sanitise this in the template, please use the escape filter like below.**
 
     {{ markdown(markdownVariable | escape) }}
 
