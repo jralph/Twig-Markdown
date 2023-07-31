@@ -1,0 +1,9 @@
+--TEST--
+"markdown" function
+--TEMPLATE--
+{% set payload = '<script>alert(`XSS`);</script>' %}
+{{ markdown(payload | escape) }}
+--DATA--
+return []
+--EXPECT--
+<p>&lt;script&gt;alert(<code>XSS</code>);&lt;/script&gt;</p>

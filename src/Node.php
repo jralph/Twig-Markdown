@@ -22,7 +22,7 @@ class Node extends TwigNode
      * @param  Compiler $compiler
      * @return void
      */
-    public function compile(Compiler $compiler)
+    public function compile(Compiler $compiler): void
     {
         $compiler->addDebugInfo($this)
                  ->write('ob_start();' . PHP_EOL)

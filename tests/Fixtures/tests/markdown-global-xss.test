@@ -1,0 +1,10 @@
+--TEST--
+"markdown" global function
+--TEMPLATE--
+{% autoescape false %}
+{{ markdown.parse(paragraph | escape) }}
+{% endautoescape %}
+--DATA--
+return ['paragraph' => '<script>alert(`XSS`);</script>']
+--EXPECT--
+<p>&lt;script&gt;alert(<code>XSS</code>);&lt;/script&gt;</p>

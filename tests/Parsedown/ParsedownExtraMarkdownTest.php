@@ -3,7 +3,7 @@
 use Jralph\Twig\Markdown\Parsedown\ParsedownExtraMarkdown;
 use PHPUnit\Framework\TestCase;
 
-class ParsedownExtraMarkdownText extends TestCase
+class ParsedownExtraMarkdownTest extends TestCase
 {
     /**
      * @var Parsedown|\Mockery\MockInterface
@@ -15,14 +15,14 @@ class ParsedownExtraMarkdownText extends TestCase
      */
     protected $parsedownExtraMarkdown;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->parsedown = Mockery::mock('ParsedownExtra');
 
         $this->parsedownExtraMarkdown = new ParsedownExtraMarkdown($this->parsedown);
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         unset($this->parsedownExtraMarkdown);
 

@@ -1,5 +1,3 @@
-## THIS PROJECT IS NO LONGER ACTIVELY MAINTAINED, USE AT YOUR OWN RISK
-
 # Twig Markdown Extension
 
 **Updated for Twig 2.\* - For Twig 1.\* please use version 1.0.1**
@@ -64,14 +62,31 @@ Twig::addExtension(new Jralph\Twig\Markdown\Extension(
 
 You can add this code to your Laravel 5 install in any way you like, but we recommend using a service provider.
 
+## Security
+
+Due to any and all HTML being perfectly valid within Markdown, this package does not choose to pre-sanitise input, and only pre-sanitises input when forced (the `tag` functionality does this).
+
+Care should be taken when using the `filter`, `function`, or `global` combined with user input, as this could potentially lead to XSS vulnerabilities. Generally speaking you would want to strip `<script>` tags from any output as a bare minimum.
+
 ## Provided Functionality ##
 
 The Twig-Markdown extension provides globals, functions, filters and tags to assist you with your markdown processing.
 
+### Tag (Input Safe)
 
-### Filter
+We also provide a handy tag for you to use if you want to write the markdown within a template.
 
-_NOTE: The filter currently **DOES NOT** sanitize input, and thus could be vulnerable to XSS if user input is not pre-sanisized. If you are unable to sanitize the user data yourself, please consider using the `{% markdown %}` tag functionality instead, as this does sanitize input._
+    {% markdown %}
+        # Some Markdown
+
+        This is some simple markdown content.
+        
+        {{ moreMarkdown }}
+    {% endmarkdown %}
+
+**NOTE: Filter input is sanitised automatically. The tag will not work with markdown that contains HTML.**
+
+### Filter (Input Unsafe, No HTML Support)
 
 Use just like any other twig filter.
 
@@ -86,16 +101,22 @@ Use just like any other twig filter.
         {{ moreMarkdown }}
     {% endapply %}
 
-### Function
+**NOTE: The above filter usage is unsafe. Filter input is not automatically sanitised. To sanitise this in the template, please use the escape filter like below.**
 
-_NOTE: The function currently **DOES NOT** sanitize input, and thus could be vulnerable to XSS if user input is not pre-sanisized. If you are unable to sanitize the user data yourself, please consider using the `{% markdown %}` tag functionality instead, as this does sanitize input._
+    {{ markdownVariable | escape | markdown }}
+
+### Function (Input Unsafe, HTML Support)
 
 Use just like any other twig function.
 
     {{ markdown("# Some Markdown") }}
     {{ markdown(markdownVariable) }}
 
-### Global
+**NOTE: The above function usage is unsafe. Function input is not automatically sanitised. To sanitise this in the template, please use the escape filter like below.**
+
+    {{ markdown(markdownVariable | escape) }}
+
+### Global (Input Unsafe, HTML Support)
 
 You can also use the global for direct access to the implementation of the MarkdownInterface contract.
 
@@ -104,19 +125,11 @@ You can also use the global for direct access to the implementation of the Markd
         {{ markdown.parse(markdownVariable) }}
     {% endautoescape %}
 
-_Note the use of the `{% autoescape false %}`. Without this, the generated html will be escaped......which may or may not be what you are looking for._
+_Note the use of the `{% autoescape false %}`. Without this, the generated html will be escaped......which may or may not be what you are looking for. If you wish to escape the input, but keep html output, you can do so like below_
 
-### Tag
-
-We also provide a handy tag for you to use if you want to write the markdown within a template.
-
-    {% markdown %}
-        # Some Markdown
-
-        This is some simple markdown content.
-        
-        {{ moreMarkdown }}
-    {% endmarkdown %}
+    {% autoescape false %}
+        {{ markdown.parse(markdownVariable | escape) }}
+    {% endautoescape %}
 
 ## Using Another Processor
 
