@@ -62,6 +62,12 @@ Twig::addExtension(new Jralph\Twig\Markdown\Extension(
 
 You can add this code to your Laravel 5 install in any way you like, but we recommend using a service provider.
 
+## Security
+
+Due to any and all HTML being perfectly valid within Markdown, this package does not choose to pre-sanitise input, and only pre-sanitises input when forced (the `tag` functionality does this).
+
+Care should be taken when using the `filter`, `function`, or `global` combined with user input, as this could potentially lead to XSS vulnerabilities. Generally speaking you would want to strip `<script>` tags from any output as a bare minimum.
+
 ## Provided Functionality ##
 
 The Twig-Markdown extension provides globals, functions, filters and tags to assist you with your markdown processing.
