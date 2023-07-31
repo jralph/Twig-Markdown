@@ -66,8 +66,21 @@ You can add this code to your Laravel 5 install in any way you like, but we reco
 
 The Twig-Markdown extension provides globals, functions, filters and tags to assist you with your markdown processing.
 
+### Tag (Input Safe)
 
-### Filter
+We also provide a handy tag for you to use if you want to write the markdown within a template.
+
+    {% markdown %}
+        # Some Markdown
+
+        This is some simple markdown content.
+        
+        {{ moreMarkdown }}
+    {% endmarkdown %}
+
+**NOTE: Filter input is sanitised automatically. The tag will not work with markdown that contains HTML.**
+
+### Filter (Input Unsafe, No HTML Support)
 
 Use just like any other twig filter.
 
@@ -82,9 +95,11 @@ Use just like any other twig filter.
         {{ moreMarkdown }}
     {% endapply %}
 
-**NOTE: Filter input is sanitised automatically.**
+**NOTE: The above filter usage is unsafe. Filter input is not automatically saintised. To sanitise this in the template, please use the escape filter like below.**
 
-### Function
+    {{ markdownVariable | escape | markdown }}
+
+### Function (Input Unsafe, HTML Support)
 
 Use just like any other twig function.
 
@@ -95,7 +110,7 @@ Use just like any other twig function.
 
     {{ markdown(markdownVariable | escape) }}
 
-### Global
+### Global (Input Unsafe, HTML Support)
 
 You can also use the global for direct access to the implementation of the MarkdownInterface contract.
 
@@ -109,20 +124,6 @@ _Note the use of the `{% autoescape false %}`. Without this, the generated html 
     {% autoescape false %}
         {{ markdown.parse(markdownVariable | escape) }}
     {% endautoescape %}
-
-### Tag
-
-We also provide a handy tag for you to use if you want to write the markdown within a template.
-
-    {% markdown %}
-        # Some Markdown
-
-        This is some simple markdown content.
-        
-        {{ moreMarkdown }}
-    {% endmarkdown %}
-
-**NOTE: Filter input is sanitised automatically.**
 
 ## Using Another Processor
 
