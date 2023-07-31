@@ -100,7 +100,7 @@ Use just like any other twig function.
 You can also use the global for direct access to the implementation of the MarkdownInterface contract.
 
     {% autoescape false %}
-        {{ markdown.prase("# Some Markdown") }}
+        {{ markdown.parse("# Some Markdown") }}
         {{ markdown.parse(markdownVariable) }}
     {% endautoescape %}
 
