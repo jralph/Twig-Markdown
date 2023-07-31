@@ -95,7 +95,7 @@ Use just like any other twig filter.
         {{ moreMarkdown }}
     {% endapply %}
 
-**NOTE: The above filter usage is unsafe. Filter input is not automatically saintised. To sanitise this in the template, please use the escape filter like below.**
+**NOTE: The above filter usage is unsafe. Filter input is not automatically sanitised. To sanitise this in the template, please use the escape filter like below.**
 
     {{ markdownVariable | escape | markdown }}
 
@@ -119,7 +119,7 @@ You can also use the global for direct access to the implementation of the Markd
         {{ markdown.parse(markdownVariable) }}
     {% endautoescape %}
 
-_Note the use of the `{% autoescape false %}`. Without this, the generated html will be escaped......which may or may not be what you are looking for. If you wish to escape the markdown variable, you can do so like below_
+_Note the use of the `{% autoescape false %}`. Without this, the generated html will be escaped......which may or may not be what you are looking for. If you wish to escape the input, but keep html output, you can do so like below_
 
     {% autoescape false %}
         {{ markdown.parse(markdownVariable | escape) }}
