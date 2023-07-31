@@ -23,7 +23,7 @@ class ParsedownExtraMarkdown implements Markdown {
      * @param  string $text
      * @return string
      */
-    public function parse($text)
+    public function parse($text): string
     {
         return $this->parsedown->parse($text);
     }

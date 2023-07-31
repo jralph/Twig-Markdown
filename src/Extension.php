@@ -25,7 +25,7 @@ class Extension extends AbstractExtension implements GlobalsInterface {
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return 'markdown';
     }
@@ -35,7 +35,7 @@ class Extension extends AbstractExtension implements GlobalsInterface {
      *
      * @return array
      */
-    public function getGlobals()
+    public function getGlobals(): array
     {
         return [
             'markdown' => $this->markdown
@@ -47,7 +47,7 @@ class Extension extends AbstractExtension implements GlobalsInterface {
      *
      * @return array
      */
-    public function getFilters()
+    public function getFilters(): array
     {
         return [
             'markdown' => new TwigFilter('markdown', [$this, 'parseMarkdown'], ['is_safe' => ['all']]),
@@ -59,7 +59,7 @@ class Extension extends AbstractExtension implements GlobalsInterface {
      *
      * @return array
      */
-    public function getFunctions()
+    public function getFunctions(): array
     {
         return [
             'markdown' => new TwigFunction('markdown', [$this, 'parseMarkdown'], ['is_safe' => ['all']])
@@ -71,7 +71,7 @@ class Extension extends AbstractExtension implements GlobalsInterface {
      *
      * @return array
      */
-    public function getTokenParsers()
+    public function getTokenParsers(): array
     {
         return [
             new TokenParser($this->markdown)
@@ -84,7 +84,7 @@ class Extension extends AbstractExtension implements GlobalsInterface {
      * @param  string $text
      * @return string
      */
-    public function parseMarkdown($text)
+    public function parseMarkdown($text): string
     {
         return $this->markdown->parse($text);
     }

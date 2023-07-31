@@ -8,6 +8,6 @@ interface MarkdownInterface {
      * @param  string $text
      * @return string
      */
-    public function parse($text);
+    public function parse($text): string;
 
 }

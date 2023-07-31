@@ -1,5 +1,6 @@
 <?php namespace Jralph\Twig\Markdown;
 
+use Jralph\Twig\Markdown\Contracts\MarkdownInterface;
 use Twig\Token;
 use Twig\TokenParser\AbstractTokenParser;
 use Jralph\Twig\Markdown\Contracts\MarkdownInterface as Markdown;
@@ -24,7 +25,7 @@ class TokenParser extends AbstractTokenParser {
      * @param  Token $token
      * @return Node
      */
-    public function parse(Token $token)
+    public function parse(Token $token): Node
     {
         $line = $token->getLine();
 
@@ -44,7 +45,7 @@ class TokenParser extends AbstractTokenParser {
      *
      * @return string
      */
-    public function getTag()
+    public function getTag(): string
     {
         return 'markdown';
     }
@@ -52,9 +53,9 @@ class TokenParser extends AbstractTokenParser {
     /**
      * Return the markdown instance being used.
      *
-     * @return string
+     * @return MarkdownInterface
      */
-    public function getMarkdown()
+    public function getMarkdown(): MarkdownInterface
     {
         return $this->markdown;
     }
