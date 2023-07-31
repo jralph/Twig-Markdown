@@ -71,6 +71,8 @@ The Twig-Markdown extension provides globals, functions, filters and tags to ass
 
 ### Filter
 
+_NOTE: The filter currently **DOES NOT** sanitize input, and thus could be vulnerable to XSS if user input is not pre-sanisized. If you are unable to sanitize the user data yourself, please consider using the `{% markdown %}` tag functionality instead, as this does sanitize input._
+
 Use just like any other twig filter.
 
     {{ "# Some Markdown" | markdown }}
@@ -85,6 +87,8 @@ Use just like any other twig filter.
     {% endapply %}
 
 ### Function
+
+_NOTE: The function currently **DOES NOT** sanitize input, and thus could be vulnerable to XSS if user input is not pre-sanisized. If you are unable to sanitize the user data yourself, please consider using the `{% markdown %}` tag functionality instead, as this does sanitize input._
 
 Use just like any other twig function.
 
