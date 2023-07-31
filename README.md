@@ -82,6 +82,8 @@ Use just like any other twig filter.
         {{ moreMarkdown }}
     {% endapply %}
 
+**NOTE: Filter input is sanitised automatically.**
+
 ### Function
 
 Use just like any other twig function.
@@ -89,7 +91,7 @@ Use just like any other twig function.
     {{ markdown("# Some Markdown") }}
     {{ markdown(markdownVariable) }}
 
-**NOTE: The above function usage is unsafe. Function input is not saintised. To sanitise this in the template, please use the escape filter like below.**
+**NOTE: The above function usage is unsafe. Function input is not automatically saintised. To sanitise this in the template, please use the escape filter like below.**
 
     {{ markdown(markdownVariable | escape) }}
 
@@ -119,6 +121,8 @@ We also provide a handy tag for you to use if you want to write the markdown wit
         
         {{ moreMarkdown }}
     {% endmarkdown %}
+
+**NOTE: Filter input is sanitised automatically.**
 
 ## Using Another Processor
 
