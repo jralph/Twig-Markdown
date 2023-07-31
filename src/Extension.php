@@ -50,7 +50,7 @@ class Extension extends AbstractExtension implements GlobalsInterface {
     public function getFilters()
     {
         return [
-            'markdown' => new TwigFilter('markdown', [$this, 'parseMarkdown'], ['is_safe' => ['all']])
+            'markdown' => new TwigFilter('markdown', [$this, 'parseMarkdown'], ['is_safe' => ['all'], 'pre_escape' => 'html'])
         ];
     }
 

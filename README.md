@@ -1,5 +1,3 @@
-## THIS PROJECT IS NO LONGER ACTIVELY MAINTAINED, USE AT YOUR OWN RISK
-
 # Twig Markdown Extension
 
 **Updated for Twig 2.\* - For Twig 1.\* please use version 1.0.1**
@@ -71,8 +69,6 @@ The Twig-Markdown extension provides globals, functions, filters and tags to ass
 
 ### Filter
 
-_NOTE: The filter currently **DOES NOT** sanitize input, and thus could be vulnerable to XSS if user input is not pre-sanisized. If you are unable to sanitize the user data yourself, please consider using the `{% markdown %}` tag functionality instead, as this does sanitize input._
-
 Use just like any other twig filter.
 
     {{ "# Some Markdown" | markdown }}
@@ -88,12 +84,14 @@ Use just like any other twig filter.
 
 ### Function
 
-_NOTE: The function currently **DOES NOT** sanitize input, and thus could be vulnerable to XSS if user input is not pre-sanisized. If you are unable to sanitize the user data yourself, please consider using the `{% markdown %}` tag functionality instead, as this does sanitize input._
-
 Use just like any other twig function.
 
     {{ markdown("# Some Markdown") }}
     {{ markdown(markdownVariable) }}
+
+**NOTE: The above function usage is unsafe. Function input is not saintised. To sanitise this in the template, please use the escape filter like below.**
+
+    {{ markdown(markdownVariable | escape) }}
 
 ### Global
 
@@ -104,7 +102,11 @@ You can also use the global for direct access to the implementation of the Markd
         {{ markdown.parse(markdownVariable) }}
     {% endautoescape %}
 
-_Note the use of the `{% autoescape false %}`. Without this, the generated html will be escaped......which may or may not be what you are looking for._
+_Note the use of the `{% autoescape false %}`. Without this, the generated html will be escaped......which may or may not be what you are looking for. If you wish to escape the markdown variable, you can do so like below_
+
+    {% autoescape false %}
+        {{ markdown.parse(markdownVariable | escape) }}
+    {% endautoescape %}
 
 ### Tag
 
